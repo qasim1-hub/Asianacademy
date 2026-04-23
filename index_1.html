@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>APEX INTELLIGENCE — Command Your Future</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #050508;
+    --bg2: #0a0a0f;
+    --bg3: #0f0f18;
+    --accent: #00ff88;
+    --accent2: #00cfff;
+    --accent3: #ff4060;
+    --gold: #ffd700;
+    --text: #e8e8f0;
+    --muted: #6a6a80;
+    --border: rgba(0,255,136,0.15);
+    --mono: 'Share Tech Mono', monospace;
+    --display: 'Barlow Condensed', sans-serif;
+    --body: 'Barlow', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── SCROLLING BINARY BANNER ── */
+  .binary-banner {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .binary-track {
+    display: inline-block;
+    animation: scroll-left 30s linear infinite;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(0,255,136,0.4);
+    letter-spacing: 3px;
+  }
+  @keyframes scroll-left {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(5,5,8,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo {
+    font-family: var(--display);
+    font-weight: 900;
+    font-size: 20px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--text); }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .nav-cta {
+    display: flex;
+    gap: 12px;
+  }
+  .btn-outline {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 8px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: transparent;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--accent); color: var(--bg); }
+  .btn-fill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--bg);
+    border: 1px solid var(--accent);
+    padding: 8px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: var(--accent);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-weight: 600;
+  }
+  .btn-fill:hover { background: transparent; color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 40px;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0,255,136,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 80%, rgba(0,207,255,0.05) 0%, transparent 50%),
+      repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0,255,136,0.015) 40px, rgba(0,255,136,0.015) 41px),
+      repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0,255,136,0.015) 40px, rgba(0,255,136,0.015) 41px);
+  }
+  .counter-bar {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex;
+    gap: 32px;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .counter-bar .live-num {
+    color: var(--accent3);
+    font-size: 18px;
+    font-weight: 700;
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .hero-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .hero-title {
+    font-family: var(--display);
+    font-size: clamp(56px, 10vw, 120px);
+    font-weight: 900;
+    line-height: 0.92;
+    text-transform: uppercase;
+    letter-spacing: -2px;
+    margin-bottom: 24px;
+  }
+  .hero-title .line1 { color: var(--text); }
+  .hero-title .line2 { color: var(--accent); -webkit-text-stroke: 1px var(--accent); }
+  .hero-title .line3 { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,0.2); }
+  .hero-sub {
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 auto 48px;
+    line-height: 1.7;
+  }
+  .hero-sub strong { color: var(--text); font-weight: 500; }
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .hero-btn-primary {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-btn-primary::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.2);
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+  }
+  .hero-btn-primary:hover::after { transform: translateX(0); }
+  .hero-btn-secondary {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 18px 48px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.2);
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.2s;
+  }
+  .hero-btn-secondary:hover { border-color: var(--text); }
+  .hero-badge {
+    margin-top: 48px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .hero-badge span { color: var(--accent); }
+
+  /* ── TICKER ── */
+  .ai-ticker {
+    background: var(--accent);
+    padding: 12px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-track {
+    display: inline-block;
+    animation: scroll-left 20s linear infinite;
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    color: var(--bg);
+    text-transform: uppercase;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 40px; max-width: 1200px; margin: 0 auto; }
+  .section-full { max-width: 100%; padding: 100px 0; }
+  .section-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+  .section-body {
+    color: var(--muted);
+    max-width: 640px;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* ── WHY SECTION ── */
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 64px;
+    background: var(--border);
+  }
+  .why-card {
+    background: var(--bg2);
+    padding: 48px;
+  }
+  .why-card .num {
+    font-family: var(--mono);
+    font-size: 48px;
+    color: var(--accent);
+    margin-bottom: 16px;
+    line-height: 1;
+  }
+  .why-card h3 {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .why-card p { color: var(--muted); font-size: 15px; line-height: 1.7; }
+
+  /* ── COURSES ── */
+  .courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2px;
+    margin-top: 64px;
+    background: var(--border);
+  }
+  .course-card {
+    background: var(--bg2);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s;
+  }
+  .course-card:hover { background: var(--bg3); }
+  .course-card .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border: 1px solid currentColor;
+    display: inline-block;
+    margin-bottom: 24px;
+  }
+  .tag-free { color: var(--accent); }
+  .tag-popular { color: var(--gold); }
+  .tag-advanced { color: var(--accent2); }
+  .tag-premium { color: var(--accent3); }
+  .tag-enterprise { color: var(--muted); }
+  .course-card h3 {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .course-card .subtitle {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .course-card p { color: var(--muted); font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
+  .course-features {
+    list-style: none;
+    margin-bottom: 32px;
+  }
+  .course-features li {
+    font-size: 13px;
+    color: var(--text);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .course-features li::before {
+    content: '◆';
+    font-size: 8px;
+    color: var(--accent);
+    flex-shrink: 0;
+  }
+  .price {
+    font-family: var(--display);
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .price-old {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--muted);
+    text-decoration: line-through;
+    margin-bottom: 20px;
+  }
+  .course-btn {
+    display: block;
+    text-align: center;
+    padding: 14px 24px;
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+  }
+  .btn-green { background: var(--accent); color: var(--bg); }
+  .btn-green:hover { background: #00cc6e; }
+  .btn-gold { background: var(--gold); color: #1a1000; }
+  .btn-gold:hover { background: #e6c200; }
+  .btn-blue { background: var(--accent2); color: var(--bg); }
+  .btn-blue:hover { background: #00afd9; }
+  .btn-red { background: var(--accent3); color: #fff; }
+  .btn-red:hover { background: #e0203a; }
+  .btn-gray { background: var(--muted); color: #fff; }
+  .btn-gray:hover { background: #555; }
+
+  /* ── FEATURED CARD (wide) ── */
+  .course-card.featured {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+    background: linear-gradient(135deg, var(--bg2), var(--bg3));
+    border: 1px solid rgba(255,215,0,0.2);
+  }
+  .featured-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    font-weight: 700;
+  }
+
+  /* ── STATS ── */
+  .stats-bar {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px;
+  }
+  .stats-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--border);
+  }
+  .stat-item {
+    background: var(--bg2);
+    padding: 40px;
+    text-align: center;
+  }
+  .stat-num {
+    font-family: var(--display);
+    font-size: 56px;
+    font-weight: 900;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  /* ── COMPARISON TABLE ── */
+  .table-wrap { overflow-x: auto; margin-top: 64px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--bg2);
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 20px 24px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+  thead th:first-child { color: var(--muted); }
+  thead th:nth-child(2) { color: var(--accent); }
+  thead th:nth-child(3) { color: var(--gold); }
+  thead th:nth-child(4) { color: var(--accent2); }
+  thead th:nth-child(5) { color: var(--accent3); }
+  tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); }
+  tbody tr:hover { background: rgba(255,255,255,0.02); }
+  tbody td {
+    padding: 16px 24px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  tbody td:first-child { color: var(--text); font-weight: 500; }
+  .check { color: var(--accent); font-size: 16px; }
+  .cross { color: rgba(255,255,255,0.15); }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+    background: var(--border);
+  }
+  .testimonial {
+    background: var(--bg2);
+    padding: 40px;
+  }
+  .testimonial .stars {
+    color: var(--gold);
+    font-size: 14px;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+  }
+  .testimonial blockquote {
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text);
+    margin-bottom: 24px;
+    font-style: italic;
+  }
+  .testimonial .author {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    text-transform: uppercase;
+  }
+  .testimonial .role {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+
+  /* ── FAQ ── */
+  .faq-list { margin-top: 64px; }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0;
+    cursor: pointer;
+  }
+  .faq-q {
+    font-family: var(--display);
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .faq-q .icon {
+    color: var(--accent);
+    font-size: 24px;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+  }
+  .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+  .faq-a {
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.8;
+    margin-top: 16px;
+    display: none;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ── CTA FINAL ── */
+  .final-cta {
+    text-align: center;
+    padding: 140px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(0,255,136,0.06) 0%, transparent 70%);
+  }
+  .final-cta .big-text {
+    font-family: var(--display);
+    font-size: clamp(80px, 15vw, 180px);
+    font-weight: 900;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0,255,136,0.15);
+    line-height: 0.9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .final-cta-content { position: relative; z-index: 1; }
+  .final-cta h2 {
+    font-family: var(--display);
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    line-height: 1.1;
+  }
+  .final-cta p {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 560px;
+    margin: 0 auto 48px;
+  }
+  .cta-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .cta-stack a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    text-decoration: none;
+    font-family: var(--display);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.2s;
+    border: 1px solid;
+  }
+  .cta-stack a .arrow { font-size: 20px; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 80px 40px 40px;
+  }
+  .footer-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand .logo {
+    font-family: var(--display);
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .footer-brand p { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 280px; }
+  .footer-col h4 {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 12px; }
+  .footer-col a {
+    color: var(--muted);
+    font-size: 14px;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-col a:hover { color: var(--text); }
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border);
+    padding-top: 32px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-bottom p {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--muted);
+  }
+  .disclaimer {
+    background: rgba(0,0,0,0.3);
+    border-top: 1px solid var(--border);
+    padding: 40px;
+    font-family: var(--mono);
+    font-size: 11px;
+    color: rgba(100,100,120,0.7);
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* ── EMAIL SIGNUP ── */
+  .signup-bar {
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .signup-bar h3 {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+  .signup-bar p { color: var(--muted); margin-bottom: 32px; }
+  .signup-form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .signup-form input {
+    flex: 1;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-right: none;
+    padding: 14px 20px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    outline: none;
+  }
+  .signup-form input::placeholder { color: var(--muted); }
+  .signup-form button {
+    background: var(--accent);
+    color: var(--bg);
+    border: 1px solid var(--accent);
+    padding: 14px 28px;
+    font-family: var(--display);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .signup-form button:hover { background: #00cc6e; }
+
+  /* ── MODULES/CHAPTERS ── */
+  .chapters {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 48px;
+    background: var(--border);
+  }
+  .chapter {
+    background: var(--bg2);
+    padding: 28px 32px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: background 0.2s;
+  }
+  .chapter:hover { background: var(--bg3); }
+  .chapter-num {
+    font-family: var(--mono);
+    font-size: 20px;
+    color: rgba(0,255,136,0.3);
+    line-height: 1;
+    flex-shrink: 0;
+    min-width: 48px;
+  }
+  .chapter h4 {
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+  .chapter p { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+    .why-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .course-card.featured { grid-template-columns: 1fr; }
+    .chapters { grid-template-columns: 1fr; }
+    .hero-title { font-size: clamp(42px, 12vw, 80px); }
+  }
+  @media (max-width: 600px) {
+    .stats-inner { grid-template-columns: 1fr 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .hero-buttons { flex-direction: column; }
+    .signup-form { flex-direction: column; }
+    .signup-form input { border-right: 1px solid var(--border); border-bottom: none; }
+  }
+
+  /* ── ANIMATIONS ── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.9);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    max-width: 480px;
+    width: 100%;
+    padding: 48px;
+    position: relative;
+  }
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal h2 {
+    font-family: var(--display);
+    font-size: 28px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .modal p { color: var(--muted); font-size: 14px; margin-bottom: 32px; }
+  .modal input {
+    width: 100%;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    color: var(--text);
+    font-family: var(--mono);
+    font-size: 13px;
+    outline: none;
+    margin-bottom: 12px;
+    display: block;
+  }
+  .modal input:focus { border-color: var(--accent); }
+  .modal .modal-btn {
+    width: 100%;
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 16px;
+    font-family: var(--display);
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s;
+  }
+  .modal .modal-btn:hover { background: #00cc6e; }
+  .modal-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .modal-switch a { color: var(--accent); cursor: pointer; text-decoration: none; }
+</style>
+</head>
+<body>
+
+<!-- BINARY BANNER -->
+<div class="binary-banner">
+  <span class="binary-track">01001 SYSTEM 10110 APEX 01101 INTELLIGENCE 10010 NETWORK 01001 DEPLOY 10110 AGENT 01101 LEARN 10010 BUILD 01001 EXECUTE 10110 SCALE 01101 LAUNCH 10010 VERIFY 01001 SYSTEM 10110 APEX 01101 INTELLIGENCE 10010 NETWORK 01001 DEPLOY 10110 AGENT 01101 LEARN 10010 BUILD 01001 EXECUTE 10110 SCALE 01101 LAUNCH 10010 VERIFY &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">APEX<span>INTELLIGENCE</span></a>
+  <ul class="nav-links">
+    <li><a href="#courses">COURSES</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#compare">COMPARE</a></li>
+    <li><a href="#testimonials">RESULTS</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="#" class="btn-outline" onclick="openModal('login')">LOGIN</a>
+    <a href="#" class="btn-fill" onclick="openModal('signup')">JOIN FREE</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div style="background:var(--bg); position:relative;">
+  <div class="hero-bg"></div>
+  <div class="hero" style="position:relative; z-index:1;">
+    <div class="counter-bar">
+      <span>AI MODELS SHIPPED SINCE YOU OPENED THIS PAGE:</span>
+      <span class="live-num" id="liveCount">0</span>
+      <span>NEW TOOLS LIVE · OLD SKILLS OBSOLETE · THE GAP IS GROWING</span>
+    </div>
+    <div class="hero-eyebrow">↯ APEX INTELLIGENCE NETWORK ↯</div>
+    <div class="hero-title">
+      <div class="line1">BUILD YOUR</div>
+      <div class="line2">AI-POWERED</div>
+      <div class="line3">FUTURE</div>
+    </div>
+    <p class="hero-sub">
+      Every day you wait, someone else compounds their advantage. <strong>Learn to build AI systems, automate your income, and deploy real businesses</strong> — not theory. Real prompts, real results, real money.
+    </p>
+    <div class="hero-buttons">
+      <a href="#courses" class="hero-btn-primary">Start Free Course →</a>
+      <a href="#courses" class="hero-btn-secondary">View All Courses</a>
+    </div>
+    <div class="hero-badge">
+      🔒 Secure checkout via Stripe &nbsp;·&nbsp; <span>30-Day Money-Back Guarantee</span> &nbsp;·&nbsp; Instant Access
+    </div>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ai-ticker">
+  <span class="ticker-track">◆ AI IS CHANGING EVERYTHING ◆ YOUR SKILLS ARE EXPIRING ◆ BUILD SYSTEMS THAT COMPOUND ◆ START TODAY OR PAY TOMORROW ◆ REAL COURSES · REAL RESULTS ◆ AI IS CHANGING EVERYTHING ◆ YOUR SKILLS ARE EXPIRING ◆ BUILD SYSTEMS THAT COMPOUND ◆ START TODAY OR PAY TOMORROW ◆ REAL COURSES · REAL RESULTS ◆ &nbsp;&nbsp;&nbsp;&nbsp;</span>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">2,400+</div>
+      <div class="stat-label">Students Enrolled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">AI Courses</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">98%</div>
+      <div class="stat-label">Satisfaction Rate</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Systems Running</div>
+    </div>
+  </div>
+</div>
+
+<!-- WHY SECTION -->
+<section id="about" class="fade-in">
+  <div class="section-label">// THE REALITY</div>
+  <h2 class="section-title">The window is<br>closing fast.</h2>
+  <p class="section-body">
+    AI doesn't wait for you to be ready. Businesses built on AI infrastructure right now are compounding an advantage that gets harder to close every single day. This is your operating manual for the new economy.
+  </p>
+  <div class="why-grid">
+    <div class="why-card fade-in">
+      <div class="num">01</div>
+      <h3>Tools are worthless without a system</h3>
+      <p>Everyone has access to ChatGPT. What separates operators from spectators is knowing how to build infrastructure — agents, memory, automation — that actually runs a business.</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="num">02</div>
+      <h3>Most AI content is outdated noise</h3>
+      <p>YouTube tutorials from 6 months ago are already obsolete. Our courses are updated as the landscape shifts, so you're learning what works right now, not what worked last year.</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="num">03</div>
+      <h3>Real prompts. Real examples.</h3>
+      <p>Not theory. Every chapter comes with working prompts, real agent templates, and systems you can deploy the same day. Copy, paste, build, scale.</p>
+    </div>
+    <div class="why-card fade-in">
+      <div class="num">04</div>
+      <h3>The compound advantage is real</h3>
+      <p>Every hour you spend manually doing what AI can automate, someone else spends building systems that automate more. Their advantage compounds. This is how you get on the right side of that math.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COURSES -->
+<section id="courses" class="fade-in">
+  <div class="section-label">// ALL COURSES & OFFERINGS</div>
+  <h2 class="section-title">Choose your<br>path in.</h2>
+  <p class="section-body">Five levels. From absolute beginner to full AI command center. Every tier includes the one before it.</p>
+
+  <div class="courses-grid">
+
+    <!-- FREE COURSE -->
+    <div class="course-card fade-in">
+      <span class="tag tag-free">Free</span>
+      <h3>AI Foundations</h3>
+      <div class="subtitle">13 chapters · No signup needed</div>
+      <p>The complete mindset shift you need before touching any AI tool. Understand why most people fail and what operators do differently.</p>
+      <ul class="course-features">
+        <li>What AI actually changed (and what it didn't)</li>
+        <li>The operator vs spectator mindset</li>
+        <li>Your first AI workflow in 5 minutes</li>
+        <li>The most important tools and why</li>
+        <li>How to think in systems, not tasks</li>
+      </ul>
+      <div class="price" style="color:var(--accent)">FREE</div>
+      <div class="price-old">Always free. No credit card.</div>
+      <a href="#" class="course-btn btn-green" onclick="openModal('signup')">Start Free Course →</a>
+    </div>
+
+    <!-- COMMAND CODE -->
+    <div class="course-card fade-in">
+      <span class="tag tag-popular">Most Popular</span>
+      <h3>The Command Code</h3>
+      <div class="subtitle">18 chapters · Instant access</div>
+      <p>The complete operating manual for building an AI-powered business. Real prompts, real systems, real frameworks. Zero filler.</p>
+      <ul class="course-features">
+        <li>18 chapters of operational AI knowledge</li>
+        <li>Build your first AI agent workforce</li>
+        <li>Memory + automation systems</li>
+        <li>Real-world business case studies</li>
+        <li>Lifetime access + all future updates</li>
+      </ul>
+      <div class="price" style="color:var(--gold)">$49.99</div>
+      <div class="price-old">Was $97.00</div>
+      <a href="#" class="course-btn btn-gold" onclick="openModal('signup')">Get The Command Code →</a>
+    </div>
+
+    <!-- NEXUS PROTOCOL -->
+    <div class="course-card fade-in">
+      <span class="tag tag-advanced">Advanced</span>
+      <h3>The NEXUS Protocol</h3>
+      <div class="subtitle">AI Trading Algorithm · 13 chapters</div>
+      <p>Copy-paste AI prompts for market analysis, automated trading strategies, and a trailing stop system built for real capital deployment.</p>
+      <ul class="course-features">
+        <li>AI-powered market analysis framework</li>
+        <li>Copy-paste trading prompts</li>
+        <li>Risk management + trailing stop system</li>
+        <li>13 modules with live examples</li>
+        <li>Works with any major broker</li>
+      </ul>
+      <div class="price" style="color:var(--accent2)">$149</div>
+      <div class="price-old">One-time payment · Instant access</div>
+      <a href="#" class="course-btn btn-blue" onclick="openModal('signup')">Get NEXUS Protocol →</a>
+    </div>
+
+    <!-- FULL SETUP - FEATURED -->
+    <div class="course-card featured fade-in">
+      <span class="featured-badge">⭐ Premium Service</span>
+      <div>
+        <span class="tag tag-premium">Done-With-You</span>
+        <h3>Complete AI System Setup</h3>
+        <div class="subtitle">Step-by-step · Mac or PC · 2hr live session</div>
+        <p>You don't want to learn how to build it. You want it <strong>built, configured, and running</strong>. This is the step-by-step guide + personal 2-hour training session where we walk through every click, every command, every configuration — copy, paste, done.</p>
+        <ul class="course-features">
+          <li>Full AI agent installation on YOUR machine</li>
+          <li>25+ custom agents built for your business</li>
+          <li>50+ custom skills pre-loaded</li>
+          <li>MCP server integration (GitHub, APIs, browser)</li>
+          <li>Memory + persistence system setup</li>
+          <li>2-hour personal live training session</li>
+          <li>The Command Code included ($49.99 value)</li>
+        </ul>
+      </div>
+      <div>
+        <div class="price" style="color:var(--accent3); font-size:56px;">$1,000</div>
+        <div class="price-old">One-time. Your machine. Forever.</div>
+        <div style="color:var(--muted); font-family:var(--mono); font-size:11px; letter-spacing:1px; margin-bottom:24px;">⚠ Limited to 5 builds per month</div>
+        <a href="#" class="course-btn btn-red" onclick="openModal('signup')">Book My Setup Session →</a>
+        <div style="margin-top:16px; font-family:var(--mono); font-size:11px; color:var(--muted); line-height:1.8;">
+          + 25 Custom Agents &nbsp;·&nbsp; + 50 Skills &nbsp;·&nbsp; + 2hr Training &nbsp;·&nbsp; + Command Code
+        </div>
+      </div>
+    </div>
+
+    <!-- WEBSITE BUILD -->
+    <div class="course-card fade-in">
+      <span class="tag tag-advanced">Service</span>
+      <h3>Website Build</h3>
+      <div class="subtitle">Custom site · CRM · Payments · Admin</div>
+      <p>We design and build your complete web presence from scratch. Custom to your brand, your industry, your goals. You get a fully deployed website with admin panel, payments, and customer portal.</p>
+      <ul class="course-features">
+        <li>Custom website design (mobile-first)</li>
+        <li>Customer login + dashboard portal</li>
+        <li>Admin panel + analytics</li>
+        <li>Stripe payments + subscriptions</li>
+        <li>Full source code ownership</li>
+        <li>30-day post-launch support</li>
+        <li>3-hour personal training</li>
+      </ul>
+      <div class="price" style="color:var(--accent2)">$3,500</div>
+      <div class="price-old">We build it. You run it.</div>
+      <a href="#" class="course-btn btn-blue" onclick="openModal('signup')">Build My Website →</a>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="course-card fade-in" style="background: linear-gradient(135deg, var(--bg2), #0a0a18); border: 1px solid rgba(255,64,96,0.2);">
+      <span class="tag tag-premium">Enterprise</span>
+      <h3>The Full Machine</h3>
+      <div class="subtitle">Mac Mini Included · Shipped to your door</div>
+      <p>This is the keys to the kingdom. We buy you a brand new M4 Mac Mini, install everything, configure it to your business, teach you how to use it, and ship it to your door. You get the factory, not just the product.</p>
+      <ul class="course-features">
+        <li>Brand new M4 Mac Mini shipped to you</li>
+        <li>Claude Code — fully installed & configured</li>
+        <li>Everything from the $3,500 tier</li>
+        <li>Create any website, app, or AI agent on-command</li>
+        <li>Step-by-step documentation for every tool</li>
+        <li>5-hour personal training + 30-day support</li>
+        <li>You own it forever — no subscriptions, no lock-in</li>
+      </ul>
+      <div class="price" style="color:var(--accent3)">$5,000</div>
+      <div class="price-old">Mac Mini + full build + training — shipped.</div>
+      <a href="#" class="course-btn btn-red" onclick="openModal('signup')">Build My Empire →</a>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CHAPTER BREAKDOWN -->
+<section class="fade-in">
+  <div class="section-label">// COMMAND CODE BREAKDOWN</div>
+  <h2 class="section-title">18 Chapters.<br>Zero Filler.</h2>
+  <p class="section-body">Every chapter is built around operators who need to deploy, not engineers who need to understand architecture.</p>
+  <div class="chapters">
+    <div class="chapter fade-in"><div class="chapter-num">01</div><div><h4>The Shift</h4><p>What already changed and why most people missed it entirely.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">02</div><div><h4>The Interface of Reality</h4><p>How AI has become the new operating layer for every business.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">03</div><div><h4>The New Toolset</h4><p>Every tool that matters right now — and how they connect.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">04</div><div><h4>The Operator Mindset</h4><p>Stop thinking like a user. Start thinking like a systems architect.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">05</div><div><h4>Agents — Your Digital Workforce</h4><p>What agents actually are and how to build a team of them.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">06</div><div><h4>Building Your First System</h4><p>Copy-paste prompts. Deploy in under one hour. Real output.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">07</div><div><h4>Memory + Storage</h4><p>Make your AI remember. Every session compounds on the last.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">08</div><div><h4>Automation — Removing Yourself</h4><p>How to build workflows that run without your involvement.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">09</div><div><h4>Real-World Applications</h4><p>Seven businesses built entirely on AI infrastructure. Dissected.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">10</div><div><h4>The Advantage Window</h4><p>How to measure and close the gap between you and the frontier.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">11</div><div><h4>The Command Center</h4><p>Building the single dashboard that controls your entire AI workforce.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">12</div><div><h4>Daily Operation</h4><p>What a real AI-powered workday looks like, hour by hour.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">13</div><div><h4>Expansion</h4><p>From one agent to 50. From one business to a portfolio.</p></div></div>
+    <div class="chapter fade-in"><div class="chapter-num">14–18</div><div><h4>Advanced Systems + Monetization</h4><p>The full stack: custom skills, revenue models, and scaling playbooks.</p></div></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- COMPARE TABLE -->
+<section id="compare" class="fade-in">
+  <div class="section-label">// COMPARISON</div>
+  <h2 class="section-title">Choose your<br>path wisely.</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Free Course</th>
+          <th>Command Code ($49.99)</th>
+          <th>Setup ($1,000)</th>
+          <th>Website ($3,500)</th>
+          <th style="color:var(--accent3)">Enterprise ($5,000)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>AI fundamentals (13 chapters)</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Full 18-chapter operating manual</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Lifetime access + updates</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Step-by-step setup guide</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>25+ custom AI agents</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="cross">—</td><td class="check">✓</td></tr>
+        <tr><td>Personal training session</td><td class="cross">—</td><td class="cross">—</td><td>2 hours</td><td>3 hours</td><td>5 hours</td></tr>
+        <tr><td>Custom website built for you</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>CRM + payments + admin panel</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Follow-up support</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td>14 days</td><td>30 days</td></tr>
+        <tr><td>M4 Mac Mini shipped to you</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check" style="color:var(--accent3)">✓ Included</td></tr>
+        <tr><td>AI builds for you on command</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="check" style="color:var(--accent3)">✓ Unlimited</td></tr>
+        <tr>
+          <td><strong>What you get</strong></td>
+          <td style="color:var(--accent); font-family:var(--mono); font-size:11px;">KNOWLEDGE</td>
+          <td style="color:var(--gold); font-family:var(--mono); font-size:11px;">THE PLAYBOOK</td>
+          <td style="color:var(--accent2); font-family:var(--mono); font-size:11px;">THE GUIDE</td>
+          <td style="color:var(--accent3); font-family:var(--mono); font-size:11px;">A PRODUCT</td>
+          <td style="color:var(--accent3); font-family:var(--mono); font-size:11px;">THE FACTORY</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TESTIMONIALS -->
+<section id="testimonials" class="fade-in">
+  <div class="section-label">// RESULTS</div>
+  <h2 class="section-title">Built. Deployed.<br>Operating.</h2>
+  <div class="testimonials-grid">
+    <div class="testimonial fade-in">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I went from spending 6 hours a day on content creation to 45 minutes. The agent system from Chapter 6 alone was worth 10x the price."</blockquote>
+      <div class="author">Khalid M.</div>
+      <div class="role">E-Commerce Operator · Karachi, PK</div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The NEXUS Protocol paid for itself in the first week. The trailing stop system is something I never would have built myself — I just needed the prompts."</blockquote>
+      <div class="author">Sarah T.</div>
+      <div class="role">Freelance Trader · Dubai, UAE</div>
+    </div>
+    <div class="testimonial fade-in">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The $1,000 setup service was the best investment I made this year. In two hours I had a fully running AI business system. My team is already asking 'how did you build this?'"</blockquote>
+      <div class="author">Usman R.</div>
+      <div class="role">Digital Agency Owner · Lahore, PK</div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL SIGNUP -->
+<div class="signup-bar">
+  <h3>Not Ready to Buy? Stay Connected.</h3>
+  <p>Get early access to new tools, agent configs, and system updates — before anyone else.</p>
+  <div class="signup-form">
+    <input type="email" placeholder="your@email.com">
+    <button type="button">Join Network</button>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section id="faq" class="fade-in">
+  <div class="section-label">// FAQ</div>
+  <h2 class="section-title">You're thinking<br>one of these.</h2>
+  <div class="faq-list">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">"I can learn this for free on YouTube." <span class="icon">+</span></div>
+      <div class="faq-a">You can learn pieces. Scattered across hundreds of outdated videos recorded on tools that no longer exist. The difference between scattered information and a blueprint is the difference between having parts and having a system. The Command Code is the sequenced, operational blueprint — built from real experience, not theory.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">"I'm not technical enough for this." <span class="icon">+</span></div>
+      <div class="faq-a">This was built for operators, not engineers. The entire point of AI is that the technical barrier dropped to near zero. Chapter 1 makes this clear. If you can follow instructions and copy-paste text, you can build what this teaches.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">"Won't this be outdated in 6 months?" <span class="icon">+</span></div>
+      <div class="faq-a">Tools change. Systems thinking doesn't. The Command Code teaches you how to deploy AI infrastructure — not how to use one specific tool. When tools update, the framework still works. Plus, all purchases include lifetime updates as the course evolves with the landscape.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">"What's the refund policy?" <span class="icon">+</span></div>
+      <div class="faq-a">Digital products (courses) have a 30-day money-back guarantee — read it all, build a system, if it's not worth every dollar you pay nothing. Service-based products (Setup, Enterprise, Website Build) are reviewed on a case-by-case basis within 14 days of delivery.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">"I'll just get to this later." <span class="icon">+</span></div>
+      <div class="faq-a">Look at the counter at the top of this page. That's how much changed since you arrived. "Later" isn't a plan — it's the most expensive decision you'll make. Every day the gap grows. The price goes up without notice. There is no better time than right now.</div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">"How does the Website Build work?" <span class="icon">+</span></div>
+      <div class="faq-a">After purchase, you fill out a questionnaire about your business, brand, goals, and target audience. We design and build everything in 5-7 business days, then schedule a 3-hour live session to deploy, walk you through every feature, and hand over full source code ownership. No lock-in, no recurring fees.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="final-cta">
+  <div class="big-text">NOW</div>
+  <div class="final-cta-content">
+    <h2>The window is<br>open right now.</h2>
+    <p>The tools are available. The framework is clear. The only variable left is you.</p>
+    <div class="cta-stack">
+      <a href="#" onclick="openModal('signup')" style="background:var(--accent); color:var(--bg); border-color:var(--accent);">
+        <span>Start Free — 13 Chapters</span> <span class="arrow">→</span>
+      </a>
+      <a href="#" onclick="openModal('signup')" style="background:transparent; color:var(--gold); border-color:var(--gold);">
+        <span>Get The Command Code — $49.99</span> <span class="arrow">→</span>
+      </a>
+      <a href="#" onclick="openModal('signup')" style="background:transparent; color:var(--accent2); border-color:var(--accent2);">
+        <span>NEXUS Protocol — $149</span> <span class="arrow">→</span>
+      </a>
+      <a href="#" onclick="openModal('signup')" style="background:transparent; color:var(--accent3); border-color:var(--accent3);">
+        <span>Full Setup — $1,000</span> <span class="arrow">→</span>
+      </a>
+      <a href="#" onclick="openModal('signup')" style="background:var(--accent3); color:#fff; border-color:var(--accent3);">
+        <span>Build My Empire — $5,000</span> <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo">APEX INTELLIGENCE</div>
+      <p>The operating manual for the new economy. Build AI systems that compound while you sleep.</p>
+      <div style="margin-top:24px; font-family:var(--mono); font-size:11px; color:var(--muted); letter-spacing:1px;">
+        © 2026 APEX Intelligence LLC. All rights reserved.
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Courses</h4>
+      <ul>
+        <li><a href="#">Free Course</a></li>
+        <li><a href="#">Command Code</a></li>
+        <li><a href="#">NEXUS Protocol</a></li>
+        <li><a href="#">Full Setup</a></li>
+        <li><a href="#">Website Build</a></li>
+        <li><a href="#">Enterprise</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Results</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Earnings Disclaimer</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="disclaimer">
+    <strong>EARNINGS DISCLAIMER:</strong> Results vary. All products are educational in nature. We make no guarantees regarding income, business results, or specific outcomes. Any results mentioned are not typical and depend on individual effort, experience, and market conditions. Past results do not guarantee future performance. Nothing on this website constitutes legal, financial, tax, or professional advice. Consult qualified professionals before making financial decisions. This platform utilizes artificial intelligence tools including large language models in the development and delivery of its products.
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 APEX INTELLIGENCE LLC · ALL RIGHTS RESERVED</p>
+    <p>BUILT WITH AI · DEPLOYED WITH PURPOSE</p>
+  </div>
+</footer>
+
+<!-- LOGIN / SIGNUP MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="loginForm">
+      <h2>Access the Network</h2>
+      <p>Log in to your Apex Intelligence account.</p>
+      <input type="email" placeholder="Email address">
+      <input type="password" placeholder="Password">
+      <button class="modal-btn">LOGIN →</button>
+      <div class="modal-switch">No account? <a onclick="switchModal('signup')">Join the network</a></div>
+    </div>
+    <div id="signupForm" style="display:none">
+      <h2>Join the Network</h2>
+      <p>Create your account. Get instant access.</p>
+      <input type="text" placeholder="Your name">
+      <input type="email" placeholder="Email address">
+      <input type="password" placeholder="Create password">
+      <button class="modal-btn">CREATE ACCOUNT →</button>
+      <div class="modal-switch">Already have an account? <a onclick="switchModal('login')">Log in</a></div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── LIVE COUNTER ──
+  let count = 0;
+  const el = document.getElementById('liveCount');
+  setInterval(() => {
+    count += Math.floor(Math.random() * 3) + 1;
+    el.textContent = count;
+  }, 2000);
+
+  // ── FAQ ──
+  function toggleFaq(item) {
+    item.classList.toggle('open');
+  }
+
+  // ── MODAL ──
+  function openModal(type) {
+    document.getElementById('modal').classList.add('open');
+    switchModal(type);
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function switchModal(type) {
+    document.getElementById('loginForm').style.display = type === 'login' ? 'block' : 'none';
+    document.getElementById('signupForm').style.display = type === 'signup' ? 'block' : 'none';
+  }
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // ── SCROLL ANIMATIONS ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
