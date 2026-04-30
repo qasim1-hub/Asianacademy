@@ -1,0 +1,1221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Asian Skills Development Academy – Abbottabad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Noto+Nastaliq+Urdu:wght@400;700&family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+<style>
+  /* ═══════════════════════════════════════════
+     CSS VARIABLES – brand palette from posters
+  ═══════════════════════════════════════════ */
+  :root{
+    --navy:#1a1a6e;
+    --blue:#1e3fa8;
+    --gold:#f5c518;
+    --orange:#ff6b00;
+    --red:#e01c1c;
+    --white:#ffffff;
+    --light:#f4f6ff;
+    --dark:#0d0d2b;
+    --accent:#00c2ff;
+    --font-head:'Montserrat',sans-serif;
+    --font-body:'Raleway',sans-serif;
+    --font-urdu:'Noto Nastaliq Urdu',serif;
+  }
+
+  /* ═══════════════════════════════
+     RESET & BASE
+  ═══════════════════════════════ */
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-body);background:var(--white);color:var(--dark);overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;}
+
+  /* ═══════════════════════════════
+     NAVBAR
+  ═══════════════════════════════ */
+  nav{
+    position:fixed;top:0;left:0;width:100%;z-index:1000;
+    background:var(--navy);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 5%;height:70px;
+    box-shadow:0 2px 20px rgba(0,0,0,.5);
+  }
+  .logo-wrap{display:flex;align-items:center;gap:12px;}
+  .logo-icon{
+    width:46px;height:46px;border-radius:6px;
+    background:var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-head);font-weight:900;font-size:20px;
+    color:var(--navy);letter-spacing:-1px;
+  }
+  .logo-text{color:var(--white);font-family:var(--font-head);font-weight:800;font-size:15px;line-height:1.2;}
+  .logo-text span{color:var(--gold);}
+  .logo-text small{font-weight:400;font-size:11px;opacity:.7;display:block;}
+
+  .nav-links{display:flex;gap:28px;list-style:none;}
+  .nav-links a{
+    color:rgba(255,255,255,.85);font-size:13px;font-weight:600;
+    text-transform:uppercase;letter-spacing:1px;
+    transition:.25s;padding-bottom:4px;border-bottom:2px solid transparent;
+  }
+  .nav-links a:hover{color:var(--gold);border-color:var(--gold);}
+
+  .nav-cta{
+    background:var(--gold);color:var(--navy);
+    font-family:var(--font-head);font-weight:800;font-size:13px;
+    padding:9px 20px;border-radius:4px;
+    transition:.25s;letter-spacing:.5px;
+  }
+  .nav-cta:hover{background:var(--orange);color:#fff;}
+
+  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+  .hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s;}
+
+  /* ═══════════════════════════════
+     HERO
+  ═══════════════════════════════ */
+  #hero{
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--dark) 0%,var(--navy) 50%,#0e2a7a 100%);
+    display:flex;align-items:center;
+    padding:100px 5% 60px;
+    position:relative;overflow:hidden;
+  }
+  #hero::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(ellipse 60% 70% at 80% 50%,rgba(0,194,255,.15),transparent 70%);
+    pointer-events:none;
+  }
+  /* Animated geometric triangles */
+  .tri{
+    position:absolute;opacity:.08;
+    border-style:solid;border-color:transparent;
+    animation:float 8s ease-in-out infinite;
+  }
+  .tri1{border-width:0 120px 200px 120px;border-bottom-color:var(--gold);top:10%;left:60%;animation-delay:0s;}
+  .tri2{border-width:0 80px 140px 80px;border-bottom-color:var(--accent);bottom:15%;right:10%;animation-delay:3s;}
+  .tri3{border-width:0 60px 100px 60px;border-bottom-color:var(--gold);top:55%;left:70%;animation-delay:1.5s;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(5deg)}}
+
+  .hero-content{max-width:600px;position:relative;z-index:2;}
+  .hero-badge{
+    display:inline-block;
+    background:rgba(245,197,24,.15);border:1px solid var(--gold);
+    color:var(--gold);font-size:11px;font-weight:700;letter-spacing:2px;
+    text-transform:uppercase;padding:5px 14px;border-radius:20px;
+    margin-bottom:20px;
+  }
+  .hero-content h1{
+    font-family:var(--font-head);font-weight:900;
+    font-size:clamp(2.2rem,5vw,4rem);
+    color:var(--white);line-height:1.1;margin-bottom:18px;
+  }
+  .hero-content h1 span{
+    color:var(--gold);display:block;
+  }
+  .hero-content p{
+    color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7;
+    margin-bottom:30px;max-width:480px;
+  }
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--gold);color:var(--navy);
+    font-family:var(--font-head);font-weight:800;font-size:14px;
+    padding:14px 32px;border-radius:4px;
+    transition:.3s;letter-spacing:.5px;
+    box-shadow:0 4px 20px rgba(245,197,24,.4);
+  }
+  .btn-primary:hover{background:var(--orange);color:#fff;transform:translateY(-2px);}
+  .btn-outline{
+    border:2px solid rgba(255,255,255,.4);color:var(--white);
+    font-family:var(--font-head);font-weight:700;font-size:14px;
+    padding:12px 28px;border-radius:4px;transition:.3s;
+  }
+  .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+
+  /* stats strip */
+  .hero-stats{
+    display:flex;gap:40px;margin-top:48px;flex-wrap:wrap;
+  }
+  .stat{color:var(--white);}
+  .stat-num{font-family:var(--font-head);font-weight:900;font-size:2rem;color:var(--gold);}
+  .stat-label{font-size:12px;opacity:.7;letter-spacing:.5px;text-transform:uppercase;}
+
+  /* hero image side */
+  .hero-visual{
+    position:absolute;right:0;bottom:0;width:45%;max-width:520px;
+    opacity:.18;pointer-events:none;
+  }
+
+  /* ═══════════════════════════════
+     SECTION COMMON
+  ═══════════════════════════════ */
+  section{padding:80px 5%;}
+  .section-label{
+    font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;
+    color:var(--blue);margin-bottom:10px;
+  }
+  .section-title{
+    font-family:var(--font-head);font-weight:900;
+    font-size:clamp(1.6rem,3vw,2.6rem);
+    color:var(--navy);margin-bottom:14px;
+    line-height:1.2;
+  }
+  .section-title span{color:var(--orange);}
+  .section-sub{color:#555;font-size:.95rem;line-height:1.7;max-width:560px;}
+  .section-head{margin-bottom:50px;}
+
+  /* ═══════════════════════════════
+     ABOUT
+  ═══════════════════════════════ */
+  #about{background:var(--light);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-text h2{font-family:var(--font-head);font-weight:900;font-size:clamp(1.5rem,2.5vw,2.2rem);color:var(--navy);margin-bottom:16px;line-height:1.2;}
+  .about-text h2 span{color:var(--orange);}
+  .about-text p{color:#444;font-size:.95rem;line-height:1.8;margin-bottom:14px;}
+  .affiliations{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .aff-badge{
+    background:var(--navy);color:var(--gold);
+    font-family:var(--font-head);font-weight:800;font-size:12px;
+    padding:7px 16px;border-radius:3px;letter-spacing:1px;
+  }
+  .about-card{
+    background:var(--navy);border-radius:12px;padding:40px;
+    color:var(--white);position:relative;overflow:hidden;
+  }
+  .about-card::before{
+    content:'';position:absolute;top:-40px;right:-40px;
+    width:180px;height:180px;border-radius:50%;
+    background:rgba(245,197,24,.12);
+  }
+  .about-card h3{font-family:var(--font-head);font-weight:800;font-size:1.3rem;color:var(--gold);margin-bottom:20px;}
+  .about-fact{display:flex;align-items:flex-start;gap:12px;margin-bottom:18px;}
+  .fact-icon{width:36px;height:36px;border-radius:6px;background:rgba(245,197,24,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:16px;}
+  .fact-text{font-size:.9rem;line-height:1.5;opacity:.9;}
+  .fact-text strong{display:block;color:var(--gold);font-size:.85rem;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
+
+  /* ═══════════════════════════════
+     COURSES
+  ═══════════════════════════════ */
+  #courses{background:var(--white);}
+  .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+  .tab{
+    padding:9px 20px;border-radius:20px;font-size:13px;font-weight:700;
+    cursor:pointer;border:2px solid #dde;color:#666;transition:.25s;
+  }
+  .tab.active,.tab:hover{background:var(--navy);color:var(--gold);border-color:var(--navy);}
+
+  .courses-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;}
+  .course-card{
+    border-radius:10px;overflow:hidden;
+    box-shadow:0 4px 24px rgba(26,26,110,.08);
+    transition:.3s;border:1px solid #eef;
+    cursor:pointer;
+  }
+  .course-card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(26,26,110,.18);}
+  .card-top{
+    height:120px;display:flex;align-items:center;justify-content:center;
+    font-size:3rem;position:relative;
+  }
+  .card-top.it{background:linear-gradient(135deg,var(--navy),var(--blue));}
+  .card-top.lang{background:linear-gradient(135deg,#0a7a3c,#1da354);}
+  .card-top.design{background:linear-gradient(135deg,#7a0a6e,#c224b0);}
+  .card-top.freelance{background:linear-gradient(135deg,var(--orange),#ff9a00);}
+  .card-top.dit{background:linear-gradient(135deg,#c47c00,var(--gold));color:var(--navy);}
+  .card-body{padding:20px;}
+  .card-body h3{font-family:var(--font-head);font-weight:800;font-size:1rem;color:var(--navy);margin-bottom:8px;}
+  .card-body p{font-size:.85rem;color:#666;line-height:1.6;margin-bottom:14px;}
+  .card-tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{font-size:11px;font-weight:600;padding:3px 10px;border-radius:12px;background:#f0f3ff;color:var(--blue);}
+  .card-footer{
+    padding:12px 20px;background:var(--light);border-top:1px solid #eef;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .card-footer span{font-size:12px;font-weight:700;color:var(--orange);}
+  .card-footer a{
+    background:var(--navy);color:var(--gold);font-size:11px;font-weight:700;
+    padding:5px 14px;border-radius:12px;letter-spacing:.5px;
+  }
+
+  /* ═══════════════════════════════
+     DIT SECTION
+  ═══════════════════════════════ */
+  #dit{
+    background:linear-gradient(135deg,var(--navy) 0%,#0e2a7a 100%);
+    color:var(--white);
+  }
+  #dit .section-title{color:var(--white);}
+  #dit .section-label{color:var(--gold);}
+  .dit-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .dit-sem{
+    background:rgba(255,255,255,.07);border-radius:10px;padding:28px;
+    border:1px solid rgba(245,197,24,.2);
+  }
+  .dit-sem h3{font-family:var(--font-head);font-weight:800;font-size:1rem;color:var(--gold);margin-bottom:18px;text-transform:uppercase;letter-spacing:1px;}
+  .dit-item{
+    display:flex;align-items:center;gap:10px;padding:9px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:.9rem;
+  }
+  .dit-item:last-child{border:none;}
+  .dit-item::before{content:'▸';color:var(--gold);font-size:.8rem;}
+  .dit-highlight{
+    background:var(--gold);color:var(--navy);border-radius:10px;padding:28px;
+    text-align:center;grid-column:span 2;
+    display:flex;justify-content:space-around;flex-wrap:wrap;gap:20px;
+  }
+  .dit-highlight .h-stat{text-align:center;}
+  .dit-highlight .h-num{font-family:var(--font-head);font-weight:900;font-size:2.2rem;color:var(--navy);}
+  .dit-highlight .h-lbl{font-size:12px;font-weight:700;opacity:.7;text-transform:uppercase;letter-spacing:1px;}
+
+  /* ═══════════════════════════════
+     LANGUAGES
+  ═══════════════════════════════ */
+  #languages{background:var(--light);}
+  .lang-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;}
+  .lang-card{
+    background:var(--white);border-radius:10px;padding:24px 16px;
+    text-align:center;border:2px solid #eef;transition:.3s;
+    cursor:default;
+  }
+  .lang-card:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 8px 24px rgba(26,26,110,.1);}
+  .lang-flag{font-size:2.4rem;margin-bottom:10px;display:block;}
+  .lang-name{font-family:var(--font-head);font-weight:800;font-size:.95rem;color:var(--navy);margin-bottom:4px;}
+  .lang-note{font-size:.78rem;color:var(--orange);font-weight:600;}
+
+  /* ═══════════════════════════════
+     WORKSHOP BANNER
+  ═══════════════════════════════ */
+  #workshop{
+    background:linear-gradient(135deg,#d4006d,#ff4fa0);
+    padding:60px 5%;color:var(--white);
+    display:flex;align-items:center;justify-content:space-between;
+    gap:30px;flex-wrap:wrap;
+  }
+  .ws-text h2{font-family:var(--font-head);font-weight:900;font-size:clamp(1.4rem,3vw,2.2rem);margin-bottom:8px;}
+  .ws-text p{opacity:.9;font-size:.95rem;line-height:1.6;}
+  .ws-badges{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px;}
+  .ws-badge{
+    background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.4);
+    padding:6px 14px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:.5px;
+  }
+  .ws-cta{
+    background:var(--white);color:#d4006d;
+    font-family:var(--font-head);font-weight:900;font-size:15px;
+    padding:16px 36px;border-radius:6px;white-space:nowrap;
+    box-shadow:0 4px 20px rgba(0,0,0,.2);transition:.3s;
+  }
+  .ws-cta:hover{background:var(--gold);color:var(--navy);}
+
+  /* ═══════════════════════════════
+     FREELANCING
+  ═══════════════════════════════ */
+  #freelancing{background:var(--white);}
+  .fl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;}
+  .fl-card{
+    background:var(--light);border-radius:10px;padding:24px 20px;
+    border-left:4px solid var(--blue);transition:.3s;
+  }
+  .fl-card:hover{border-color:var(--gold);background:#fffbef;}
+  .fl-icon{font-size:1.8rem;margin-bottom:12px;}
+  .fl-card h4{font-family:var(--font-head);font-weight:800;font-size:.95rem;color:var(--navy);margin-bottom:6px;}
+  .fl-card p{font-size:.82rem;color:#666;line-height:1.5;}
+
+  /* ═══════════════════════════════
+     EPS-TOPIK SECTION
+  ═══════════════════════════════ */
+  #korea{
+    background:linear-gradient(135deg,#00379a,#001f5e);
+    padding:80px 5%;color:var(--white);
+    display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;
+  }
+  .korea-text h2{font-family:var(--font-head);font-weight:900;font-size:clamp(1.4rem,2.5vw,2.2rem);margin-bottom:16px;color:var(--gold);}
+  .korea-text p{opacity:.85;font-size:.95rem;line-height:1.8;margin-bottom:24px;}
+  .korea-pts{list-style:none;}
+  .korea-pts li{padding:8px 0;font-size:.9rem;opacity:.9;display:flex;align-items:center;gap:8px;}
+  .korea-pts li::before{content:'✓';color:var(--gold);font-weight:900;}
+  .korea-card{
+    background:rgba(255,255,255,.07);border-radius:12px;
+    padding:32px;border:1px solid rgba(245,197,24,.3);
+    text-align:center;
+  }
+  .korea-card .big{font-family:var(--font-head);font-weight:900;font-size:3.5rem;color:var(--gold);line-height:1;}
+  .korea-card p{opacity:.8;margin-top:10px;font-size:.9rem;line-height:1.6;}
+
+  /* ═══════════════════════════════
+     CONTACT
+  ═══════════════════════════════ */
+  #contact{background:var(--light);}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+  .contact-info h2{font-family:var(--font-head);font-weight:900;font-size:clamp(1.4rem,2.5vw,2rem);color:var(--navy);margin-bottom:24px;}
+  .contact-item{display:flex;align-items:flex-start;gap:14px;margin-bottom:22px;}
+  .c-icon{
+    width:44px;height:44px;border-radius:8px;background:var(--navy);
+    display:flex;align-items:center;justify-content:center;
+    font-size:18px;flex-shrink:0;color:var(--gold);
+  }
+  .c-text strong{display:block;font-size:.85rem;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);margin-bottom:3px;font-weight:700;}
+  .c-text span{font-size:.9rem;color:#444;line-height:1.5;}
+  .social-links{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;}
+  .social-btn{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 18px;border-radius:6px;
+    font-size:13px;font-weight:700;transition:.25s;
+  }
+  .social-btn.fb{background:#1877f2;color:#fff;}
+  .social-btn.wa{background:#25d366;color:#fff;}
+  .social-btn.gm{background:#ea4335;color:#fff;}
+  .social-btn:hover{opacity:.85;transform:translateY(-2px);}
+
+  .contact-form{
+    background:var(--white);border-radius:12px;padding:36px;
+    box-shadow:0 4px 30px rgba(26,26,110,.1);
+  }
+  .contact-form h3{font-family:var(--font-head);font-weight:800;font-size:1.2rem;color:var(--navy);margin-bottom:24px;}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--blue);margin-bottom:6px;}
+  .form-group input,.form-group select,.form-group textarea{
+    width:100%;padding:12px 16px;border:2px solid #dde;border-radius:6px;
+    font-family:var(--font-body);font-size:.9rem;color:var(--dark);
+    background:#fafbff;transition:.25s;outline:none;
+  }
+  .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);}
+  .form-group textarea{resize:vertical;min-height:100px;}
+  .submit-btn{
+    width:100%;padding:14px;
+    background:var(--navy);color:var(--gold);
+    font-family:var(--font-head);font-weight:800;font-size:15px;
+    border:none;border-radius:6px;cursor:pointer;
+    letter-spacing:.5px;transition:.3s;
+  }
+  .submit-btn:hover{background:var(--blue);transform:translateY(-2px);}
+
+  /* ═══════════════════════════════
+     FOOTER
+  ═══════════════════════════════ */
+  footer{
+    background:var(--dark);color:rgba(255,255,255,.7);
+    padding:50px 5% 30px;
+  }
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  .footer-brand .logo-text{color:var(--white);font-size:17px;}
+  .footer-brand p{font-size:.85rem;line-height:1.7;margin-top:14px;opacity:.7;}
+  footer h4{font-family:var(--font-head);font-weight:800;font-size:.9rem;color:var(--gold);margin-bottom:16px;text-transform:uppercase;letter-spacing:1px;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:10px;}
+  footer ul li a{font-size:.85rem;transition:.2s;}
+  footer ul li a:hover{color:var(--gold);}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.1);padding-top:24px;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;
+    font-size:.8rem;
+  }
+  .footer-phones{display:flex;gap:16px;flex-wrap:wrap;}
+  .footer-phones a{color:var(--gold);font-weight:700;}
+
+  /* ═══════════════════════════════
+     SCROLL TO TOP
+  ═══════════════════════════════ */
+  #scrollTop{
+    position:fixed;bottom:28px;right:28px;
+    width:44px;height:44px;border-radius:50%;
+    background:var(--gold);color:var(--navy);
+    border:none;cursor:pointer;font-size:18px;
+    display:none;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px rgba(245,197,24,.4);
+    z-index:999;transition:.3s;font-weight:900;
+  }
+  #scrollTop:hover{background:var(--orange);color:#fff;}
+
+  /* ═══════════════════════════════
+     TICKER
+  ═══════════════════════════════ */
+  .ticker{
+    background:var(--gold);color:var(--navy);
+    font-family:var(--font-head);font-weight:800;font-size:13px;
+    padding:10px 0;overflow:hidden;white-space:nowrap;
+    margin-top:70px;
+  }
+  .ticker-inner{display:inline-block;animation:ticker 30s linear infinite;}
+  @keyframes ticker{from{transform:translateX(100vw)}to{transform:translateX(-100%)}}
+  .ticker-inner span{margin:0 40px;}
+
+  /* ═══════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════ */
+  @media(max-width:900px){
+    .nav-links,.nav-cta{display:none;}
+    .hamburger{display:flex;}
+    .about-grid,.dit-grid,.korea,.contact-grid,.footer-grid{grid-template-columns:1fr;}
+    #korea{grid-template-columns:1fr;}
+    .dit-highlight{grid-column:1;}
+    .hero-visual{display:none;}
+    #workshop{flex-direction:column;}
+  }
+  @media(max-width:600px){
+    .hero-stats{gap:24px;}
+    .lang-grid{grid-template-columns:repeat(3,1fr);}
+  }
+
+  /* entrance animations */
+  .fade-up{opacity:0;transform:translateY(30px);transition:.6s ease;}
+  .fade-up.visible{opacity:1;transform:none;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <div class="logo-wrap">
+    <div class="logo-icon">A</div>
+    <div class="logo-text">
+      <span>ASIAN</span> SKILLS DEVELOPMENT
+      <small>Your Guide To Success – Abbottabad</small>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#courses">Courses</a></li>
+    <li><a href="#dit">DIT</a></li>
+    <li><a href="#languages">Languages</a></li>
+    <li><a href="#freelancing">Freelancing</a></li>
+    <li><a href="#korea">Korea</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="tel:03155545014" class="nav-cta">📞 Enroll Now</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- Ticker -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>🎓 Spring Admissions 2026 Are Now Open!</span>
+    <span>📚 DIT – Affiliated with SDC, TTB & BTE</span>
+    <span>🇰🇷 EPS-TOPIK Preparation – South Korea Jobs</span>
+    <span>💻 Free Workshop: Shopify & E-Commerce – 21 April 2026</span>
+    <span>🌟 16+ Years of Excellence in Abbottabad</span>
+    <span>📞 Call: 0315-5545014 | 0316-7322208</span>
+    <span>🎓 Spring Admissions 2026 Are Now Open!</span>
+    <span>📚 DIT – Affiliated with SDC, TTB & BTE</span>
+    <span>🇰🇷 EPS-TOPIK Preparation – South Korea Jobs</span>
+    <span>💻 Free Workshop: Shopify & E-Commerce – 21 April 2026</span>
+  </div>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="tri tri1"></div>
+  <div class="tri tri2"></div>
+  <div class="tri tri3"></div>
+  <div class="hero-content">
+    <div class="hero-badge">⭐ Abbottabad's Premier IT & Language Institute</div>
+    <h1>
+      Build Your Future with
+      <span>Asian Skills Development</span>
+    </h1>
+    <p>
+      Established by internationally qualified professionals — empowering students and professionals through high-quality training, skill development, and career-focused courses since over a decade.
+    </p>
+    <div class="hero-btns">
+      <a href="#courses" class="btn-primary">Explore Courses</a>
+      <a href="#contact" class="btn-outline">Contact Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">16+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Students Placed</div></div>
+      <div class="stat"><div class="stat-num">100%</div><div class="stat-label">DIT Result</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Locations</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about" class="fade-up">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="section-label">Who We Are</div>
+      <h2>Asian Academy — <span>Your Guide to Success</span></h2>
+      <p>Asian Academy Abbottabad is established by internationally qualified professionals, dedicating to empowering students and professionals through high-quality training and skill development.</p>
+      <p>We focus on delivering industry-relevant services and practical skills needed to succeed and lead in today's competitive world. With over 16 years in the field, hundreds of our students are working across Pakistan and in South Korea.</p>
+      <div class="affiliations">
+        <div class="aff-badge">SDC</div>
+        <div class="aff-badge">TTB</div>
+        <div class="aff-badge">BTE Peshawar</div>
+        <div class="aff-badge">KP Board</div>
+      </div>
+    </div>
+    <div class="about-card">
+      <h3>Why Choose Us?</h3>
+      <div class="about-fact">
+        <div class="fact-icon">🎯</div>
+        <div class="fact-text"><strong>Practical Learning</strong>Real projects, working stores, live portfolios — not just theory.</div>
+      </div>
+      <div class="about-fact">
+        <div class="fact-icon">📜</div>
+        <div class="fact-text"><strong>Certified Courses</strong>Government-recognized diplomas affiliated with BTE, SDC & TTB.</div>
+      </div>
+      <div class="about-fact">
+        <div class="fact-icon">🌏</div>
+        <div class="fact-text"><strong>Korea Placement</strong>EPS-TOPIK prep with full syllabus coverage — both old & new.</div>
+      </div>
+      <div class="about-fact">
+        <div class="fact-icon">💰</div>
+        <div class="fact-text"><strong>Free Admission</strong>No admission fees for DIT — invest in learning, not registration.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COURSES ═══════════ -->
+<section id="courses" class="fade-up">
+  <div class="section-head">
+    <div class="section-label">What We Offer</div>
+    <h2 class="section-title">Our <span>Courses</span></h2>
+    <p class="section-sub">Industry-focused programs in IT, design, languages, and freelancing — designed for real-world success.</p>
+  </div>
+
+  <div class="courses-grid">
+
+    <div class="course-card">
+      <div class="card-top dit">🖥️</div>
+      <div class="card-body">
+        <h3>DIT – Diploma in Information Technology</h3>
+        <p>2-semester government-recognized diploma covering IT fundamentals to advanced applications. Affiliated with BTE Peshawar.</p>
+        <div class="card-tags">
+          <span class="tag">ICT</span><span class="tag">MS Office</span><span class="tag">Networking</span>
+          <span class="tag">Web Dev</span><span class="tag">Graphic Design</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Free Admission</span><a href="#dit" onclick="enrollCourse('DIT – Diploma in Information Technology')">View Details</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top design">🎨</div>
+      <div class="card-body">
+        <h3>Graphic Designing</h3>
+        <p>Master Adobe Suite — Photoshop, Illustrator, InDesign. Build a professional portfolio ready for freelancing or employment.</p>
+        <div class="card-tags">
+          <span class="tag">Photoshop</span><span class="tag">Illustrator</span><span class="tag">Portfolio</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Certificate</span><a href="javascript:enrollCourse('Graphic Designing')">Enroll</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top design">📐</div>
+      <div class="card-body">
+        <h3>UX &amp; UI Designing</h3>
+        <p>Learn to create engaging digital experiences. Covers wireframing, prototyping, and user-centered design principles.</p>
+        <div class="card-tags">
+          <span class="tag">Figma</span><span class="tag">Wireframing</span><span class="tag">UX Research</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Certificate</span><a href="javascript:enrollCourse('UX & UI Designing')">Enroll</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top it">🌐</div>
+      <div class="card-body">
+        <h3>Web Development</h3>
+        <p>Full web development track covering HTML5, CSS3, JavaScript, and responsive design. Build real websites from day one.</p>
+        <div class="card-tags">
+          <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Certificate</span><a href="javascript:enrollCourse('Web Development')">Enroll</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top freelance">🛒</div>
+      <div class="card-body">
+        <h3>Shopify &amp; E-Commerce</h3>
+        <p>Build a working online store from scratch. Covers product listing, store design, payment setup, and marketing basics.</p>
+        <div class="card-tags">
+          <span class="tag">Shopify</span><span class="tag">E-Commerce</span><span class="tag">2 Months</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>FREE Workshop</span><a href="javascript:registerWorkshop()">Join Now</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top freelance">📢</div>
+      <div class="card-body">
+        <h3>Digital Marketing</h3>
+        <p>Website optimisation + SEO, social media marketing, email marketing, and digital strategy planning for businesses.</p>
+        <div class="card-tags">
+          <span class="tag">SEO</span><span class="tag">SMM</span><span class="tag">Email Marketing</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Certificate</span><a href="javascript:enrollCourse('Digital Marketing')">Enroll</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top it">📹</div>
+      <div class="card-body">
+        <h3>Video Editing</h3>
+        <p>Professional video editing for YouTube, social media, and business. Learn cutting, color grading, and effects.</p>
+        <div class="card-tags">
+          <span class="tag">Adobe Premiere</span><span class="tag">YouTube</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Certificate</span><a href="javascript:enrollCourse('Video Editing')">Enroll</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top it">📡</div>
+      <div class="card-body">
+        <h3>Networking &amp; Camera</h3>
+        <p>Computer networking fundamentals plus CCTV camera maintenance and installation — high-demand technical skills.</p>
+        <div class="card-tags">
+          <span class="tag">Networking</span><span class="tag">CCTV</span><span class="tag">Hardware</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Certificate</span><a href="javascript:enrollCourse('Networking & Camera Maintenance')">Enroll</a></div>
+    </div>
+
+    <div class="course-card">
+      <div class="card-top it">✏️</div>
+      <div class="card-body">
+        <h3>Short Hand &amp; Auto CAD</h3>
+        <p>Professional shorthand writing for office work and AutoCAD technical drawing — essential skills for administration and engineering fields.</p>
+        <div class="card-tags">
+          <span class="tag">Shorthand</span><span class="tag">AutoCAD</span><span class="tag">Office</span>
+        </div>
+      </div>
+      <div class="card-footer"><span>Certificate</span><a href="javascript:enrollCourse('Shorthand & AutoCAD')">Enroll</a></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ DIT ═══════════ -->
+<section id="dit" class="fade-up">
+  <div class="section-head">
+    <div class="section-label">Government Recognized</div>
+    <h2 class="section-title" style="color:#fff;">Diploma in Information Technology <span style="color:var(--gold);">(DIT)</span></h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.7);">Board of Technical Education (BTE) Peshawar — 2 Semesters, Project-Affiliated Certificate</p>
+  </div>
+
+  <div class="dit-grid">
+    <div class="dit-sem">
+      <h3>📘 1st Semester — 5 Subjects</h3>
+      <div class="dit-item">Information Communication Technology</div>
+      <div class="dit-item">MS Office Automation</div>
+      <div class="dit-item">Networking</div>
+      <div class="dit-item">Operating System</div>
+      <div class="dit-item">Programming</div>
+    </div>
+    <div class="dit-sem">
+      <h3>📗 2nd Semester — 4 Subjects</h3>
+      <div class="dit-item">Graphic Designing</div>
+      <div class="dit-item">Web Development</div>
+      <div class="dit-item">Database</div>
+      <div class="dit-item">Video Editing</div>
+    </div>
+    <div class="dit-highlight">
+      <div class="h-stat"><div class="h-num">FREE</div><div class="h-lbl">Admission</div></div>
+      <div class="h-stat"><div class="h-num">100%</div><div class="h-lbl">Pass Result</div></div>
+      <div class="h-stat"><div class="h-num">9</div><div class="h-lbl">Total Subjects</div></div>
+      <div class="h-stat"><div class="h-num">BTE</div><div class="h-lbl">Affiliated</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LANGUAGES ═══════════ -->
+<section id="languages" class="fade-up">
+  <div class="section-head">
+    <div class="section-label">Global Communication</div>
+    <h2 class="section-title">Language <span>Courses</span></h2>
+    <p class="section-sub">Open doors worldwide. We offer advance-level Korean language prep plus 5 other international languages.</p>
+  </div>
+  <div class="lang-grid">
+    <div class="lang-card">
+      <span class="lang-flag">🇰🇷</span>
+      <div class="lang-name">Korean</div>
+      <div class="lang-note">Advance Classes + EPS-TOPIK</div>
+    </div>
+    <div class="lang-card">
+      <span class="lang-flag">🇬🇧</span>
+      <div class="lang-name">English</div>
+      <div class="lang-note">All Levels</div>
+    </div>
+    <div class="lang-card">
+      <span class="lang-flag">🇩🇪</span>
+      <div class="lang-name">German</div>
+      <div class="lang-note">Beginner to Advanced</div>
+    </div>
+    <div class="lang-card">
+      <span class="lang-flag">🇯🇵</span>
+      <div class="lang-name">Japanese</div>
+      <div class="lang-note">Beginner to Advanced</div>
+    </div>
+    <div class="lang-card">
+      <span class="lang-flag">🇨🇳</span>
+      <div class="lang-name">Chinese</div>
+      <div class="lang-note">Mandarin Basics</div>
+    </div>
+    <div class="lang-card">
+      <span class="lang-flag">🇸🇦</span>
+      <div class="lang-name">Arabic</div>
+      <div class="lang-note">Classical & Modern</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WORKSHOP BANNER ═══════════ -->
+<div id="workshop">
+  <div class="ws-text">
+    <h2>🎉 FREE Workshop — Shopify &amp; E-Commerce</h2>
+    <p>Build and launch your own working online store. Certificate included. Open to all skill levels.</p>
+    <div class="ws-badges">
+      <div class="ws-badge">📅 21 April 2026</div>
+      <div class="ws-badge">⏱ 2 Months Duration</div>
+      <div class="ws-badge">🏪 Working Store Included</div>
+      <div class="ws-badge">📜 Certificate Provided</div>
+    </div>
+  </div>
+  <a href="javascript:registerWorkshop()" class="ws-cta">Register Free →</a>
+</div>
+
+<!-- ═══════════ FREELANCING ═══════════ -->
+<section id="freelancing" class="fade-up">
+  <div class="section-head">
+    <div class="section-label">Earn From Home</div>
+    <h2 class="section-title">Freelancing <span>Skills</span></h2>
+    <p class="section-sub">We train you for the global freelance market — earn in dollars from Abbottabad.</p>
+  </div>
+  <div class="fl-grid">
+    <div class="fl-card"><div class="fl-icon">🛍️</div><h4>E-Commerce</h4><p>Build and manage online stores on Shopify, Daraz, Amazon and more.</p></div>
+    <div class="fl-card"><div class="fl-icon">📣</div><h4>Digital Marketing</h4><p>Run paid campaigns, grow organic reach, and manage brand strategy.</p></div>
+    <div class="fl-card"><div class="fl-icon">💻</div><h4>Web Development</h4><p>Build client websites and web apps — marketable skill on Fiverr/Upwork.</p></div>
+    <div class="fl-card"><div class="fl-icon">🎨</div><h4>Graphic Designing</h4><p>Logo, branding, social media posts — high demand globally.</p></div>
+    <div class="fl-card"><div class="fl-icon">🎬</div><h4>Video Editing</h4><p>Edit YouTube videos, reels, ads — consistent freelance income.</p></div>
+    <div class="fl-card"><div class="fl-icon">📡</div><h4>Networking</h4><p>ISP and enterprise networking setup — local & remote projects.</p></div>
+  </div>
+</section>
+
+<!-- ═══════════ KOREA / EPS-TOPIK ═══════════ -->
+<section id="korea">
+  <div class="korea-text fade-up">
+    <h2>🇰🇷 EPS-TOPIK — Work in South Korea</h2>
+    <p>If your name came up in the EPS-TOPIK draw, don't waste time searching for institutes. Asian Academy has been doing this for 16 years — our students are working in South Korea right now.</p>
+    <ul class="korea-pts">
+      <li>Complete preparation for both old &amp; new EPS-TOPIK syllabus</li>
+      <li>Full reading, writing &amp; listening practice</li>
+      <li>Guidance from admission to departure</li>
+      <li>Hundreds of students already placed in Korean factories</li>
+      <li>Expert instructors with real Korea experience</li>
+    </ul>
+    <a href="javascript:koreaEnquiry()" class="btn-primary" style="margin-top:24px;display:inline-block;">📲 WhatsApp Enquiry</a>
+  </div>
+  <div class="korea-card fade-up">
+    <div class="big">16+</div>
+    <p>Years of Korean Language Teaching in Abbottabad</p>
+    <br/>
+    <div class="big" style="font-size:2rem;margin-top:10px;">EPS-TOPIK</div>
+    <p style="margin-top:8px;">Korean Employment Permit System — complete exam preparation</p>
+    <br/>
+    <div style="background:rgba(245,197,24,.15);border-radius:8px;padding:16px;margin-top:10px;">
+      <p style="font-size:.85rem;opacity:.9;">📞 Contact: <strong style="color:var(--gold);">0316-7322208</strong><br/>📞 <strong style="color:var(--gold);">0320-8662011</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact" class="fade-up">
+  <div class="section-head">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Contact <span>Us</span></h2>
+    <p class="section-sub">Visit us at either of our locations or reach out by phone, WhatsApp, or email.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <h2>We're Here to Help</h2>
+
+      <div class="contact-item">
+        <div class="c-icon">📍</div>
+        <div class="c-text">
+          <strong>Location 1</strong>
+          <span>Near Qowat-e-Islam Masjid Kareem Pura, Link Road Band Khu Chowk, Abbottabad</span>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="c-icon">📍</div>
+        <div class="c-text">
+          <strong>Location 2 (Design Academy)</strong>
+          <span>Near Kala Khan Tikka Shop, Link Road Sarban Chowk, Abbottabad</span>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="c-icon">📞</div>
+        <div class="c-text">
+          <strong>Phone Numbers</strong>
+          <span>0316-7322208 | 0320-8662011 | 0314-5011128<br/>0315-5545014 | 0310-5658832</span>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="c-icon">✉️</div>
+        <div class="c-text">
+          <strong>Email</strong>
+          <span>asianabbottabad@gmail.com</span>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="https://www.facebook.com/share/1Q7XppjMMW/" target="_blank" class="social-btn fb">📘 Facebook</a>
+        <a href="https://wa.me/923155545014" target="_blank" class="social-btn wa">💬 WhatsApp</a>
+        <a href="mailto:asianabbottabad@gmail.com" class="social-btn gm">📧 Email</a>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <h3>Send Us a Message</h3>
+
+      <div id="successMsg" style="display:none;background:#d4edda;border:1px solid #28a745;color:#155724;padding:16px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:700;">
+        ✅ Message sent! We will contact you shortly.
+      </div>
+      <div id="errorMsg" style="display:none;background:#f8d7da;border:1px solid #dc3545;color:#721c24;padding:16px;border-radius:8px;margin-bottom:20px;text-align:center;font-weight:700;">
+        ❌ Failed to send. Please call us: <a href="tel:03155545014" style="color:#721c24;">0315-5545014</a>
+      </div>
+
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" id="f_name" placeholder="Muhammad Ali"/>
+      </div>
+      <div class="form-group">
+        <label>Phone Number *</label>
+        <input type="tel" id="f_phone" placeholder="03XX-XXXXXXX"/>
+      </div>
+      <div class="form-group">
+        <label>Course Interested In *</label>
+        <select id="f_course">
+          <option value="">— Select a Course —</option>
+          <option>DIT – Diploma in Information Technology</option>
+          <option>Korean Language / EPS-TOPIK</option>
+          <option>Graphic Designing</option>
+          <option>UX &amp; UI Designing</option>
+          <option>Web Development</option>
+          <option>Digital Marketing</option>
+          <option>Shopify &amp; E-Commerce</option>
+          <option>Video Editing</option>
+          <option>English Language</option>
+          <option>German Language</option>
+          <option>Japanese Language</option>
+          <option>Chinese Language</option>
+          <option>Arabic Language</option>
+          <option>AutoCAD</option>
+          <option>Shorthand</option>
+          <option>Networking</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Message (Optional)</label>
+        <textarea id="f_message" placeholder="Any questions or special requirements..."></textarea>
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="handleSubmit()">Send Inquiry ➤</button>
+
+      <div style="text-align:center;margin-top:16px;">
+        <p style="font-size:12px;color:#888;margin-bottom:8px;">Or reach us instantly on</p>
+        <a href="javascript:openWhatsApp()" class="social-btn wa" style="display:inline-flex;justify-content:center;">
+          💬 Chat on WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="logo-wrap">
+        <div class="logo-icon">A</div>
+        <div class="logo-text"><span>ASIAN</span> SKILLS DEVELOPMENT<small>Your Guide To Success</small></div>
+      </div>
+      <p>Established by internationally qualified professionals — empowering students through high-quality training and skill development in Abbottabad since over a decade.</p>
+      <div class="social-links" style="margin-top:16px;">
+        <a href="https://www.facebook.com/share/1Q7XppjMMW/" target="_blank" class="social-btn fb">📘</a>
+        <a href="https://wa.me/923155545014" target="_blank" class="social-btn wa">💬</a>
+        <a href="mailto:asianabbottabad@gmail.com" class="social-btn gm">📧</a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#courses">All Courses</a></li>
+        <li><a href="#dit">DIT Program</a></li>
+        <li><a href="#languages">Languages</a></li>
+        <li><a href="#freelancing">Freelancing</a></li>
+        <li><a href="#korea">EPS-TOPIK Korea</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="tel:03155545014">0315-5545014</a></li>
+        <li><a href="tel:03167322208">0316-7322208</a></li>
+        <li><a href="tel:03208662011">0320-8662011</a></li>
+        <li><a href="tel:03145011128">0314-5011128</a></li>
+        <li><a href="mailto:asianabbottabad@gmail.com" style="color:rgba(255,255,255,.6);font-size:.82rem;">asianabbottabad@gmail.com</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Asian Skills Development Academy, Abbottabad. All rights reserved.</span>
+    <span style="color:var(--gold);font-weight:700;">Your Guide to Success 🎓</span>
+  </div>
+</footer>
+
+<!-- Scroll to top -->
+<button id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Scroll to top visibility
+window.addEventListener('scroll',()=>{
+  const btn=document.getElementById('scrollTop');
+  btn.style.display=window.scrollY>400?'flex':'none';
+});
+
+// Intersection Observer for fade-up
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
+},{threshold:0.1});
+document.querySelectorAll('.fade-up').forEach(el=>obs.observe(el));
+
+// ═══════════════════════════════════════════════
+// SUPABASE CONFIG
+// ═══════════════════════════════════════════════
+const SUPABASE_URL    = 'https://kfveiqiotlmwjwyareqj.supabase.co';
+const SUPABASE_KEY    = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImtmdmVpcWlvdGxtd2p3eWFyZXFqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc0NTcwMDksImV4cCI6MjA5MzAzMzAwOX0.SNfiqxTIPSDNVY4y5o0DTlioa4Sx6q68AaRw2MamHPw';
+const WHATSAPP_NUMBER = '923155545014';
+
+// ═══════════════════════════════════════════════
+// SAVE TO SUPABASE — stores every inquiry in DB
+// ═══════════════════════════════════════════════
+async function saveToSupabase(data) {
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/inquiries`, {
+      method: 'POST',
+      headers: {
+        'Content-Type':  'application/json',
+        'apikey':        SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer':        'return=minimal'
+      },
+      body: JSON.stringify({
+        name:       data.name    || 'N/A',
+        phone:      data.phone   || 'N/A',
+        course:     data.course  || 'N/A',
+        message:    data.message || 'N/A',
+        type:       data.type    || 'contact_form',
+        created_at: new Date().toISOString()
+      })
+    });
+    return res.ok;
+  } catch(e) {
+    console.error('Supabase save error:', e);
+    return false;
+  }
+}
+
+// ═══════════════════════════════════════════════
+// CONTACT FORM — saves to Supabase + opens WhatsApp
+// ═══════════════════════════════════════════════
+async function handleSubmit() {
+  const name    = document.getElementById('f_name').value.trim();
+  const phone   = document.getElementById('f_phone').value.trim();
+  const course  = document.getElementById('f_course').value;
+  const message = document.getElementById('f_message').value.trim();
+  const btn     = document.getElementById('submitBtn');
+  const success = document.getElementById('successMsg');
+  const error   = document.getElementById('errorMsg');
+
+  success.style.display = 'none';
+  error.style.display   = 'none';
+
+  if (!name)   { showToast('⚠️ Please enter your name.'); return; }
+  if (!phone)  { showToast('⚠️ Please enter your phone number.'); return; }
+  if (!course) { showToast('⚠️ Please select a course.'); return; }
+
+  btn.innerHTML = '<span class="btn-spinner"></span> Sending...';
+  btn.disabled  = true;
+
+  // Save to Supabase database
+  const saved = await saveToSupabase({
+    name, phone, course,
+    message: message || 'No message provided.',
+    type: 'contact_form'
+  });
+
+  if (saved) {
+    success.style.display = 'block';
+    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Clear form
+    document.getElementById('f_name').value    = '';
+    document.getElementById('f_phone').value   = '';
+    document.getElementById('f_course').value  = '';
+    document.getElementById('f_message').value = '';
+    showToast('✅ Inquiry saved! We will call you soon.');
+    // Also send WhatsApp notification to academy
+    const waMsg = encodeURIComponent(
+      `🎓 *NEW INQUIRY via Website*\n\n👤 Name: ${name}\n📞 Phone: ${phone}\n📚 Course: ${course}\n💬 Message: ${message || 'None'}\n\n_Sent from asianacademy.online_`
+    );
+    setTimeout(() => {
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${waMsg}`, '_blank');
+    }, 1000);
+  } else {
+    error.style.display = 'block';
+    showToast('❌ Error saving. Please call: 0315-5545014');
+  }
+
+  btn.innerHTML = 'Send Inquiry ➤';
+  btn.disabled  = false;
+}
+
+// ═══════════════════════════════════════════════
+// ENROLL BUTTON — saves to DB + opens WhatsApp
+// ═══════════════════════════════════════════════
+async function enrollCourse(courseName) {
+  // Save click to Supabase
+  await saveToSupabase({
+    name: 'Website Visitor',
+    phone: 'N/A',
+    course: courseName,
+    message: 'Clicked Enroll button on course card',
+    type: 'enroll_click'
+  });
+  // Open WhatsApp
+  const msg = encodeURIComponent(
+    `السلام علیکم! I am interested in enrolling in:\n\n*${courseName}*\n\nPlease provide details about fee, schedule, and admission process.\n\nThank you!`
+  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+}
+
+// ═══════════════════════════════════════════════
+// WORKSHOP BUTTON — saves to DB + opens WhatsApp
+// ═══════════════════════════════════════════════
+async function registerWorkshop() {
+  await saveToSupabase({
+    name: 'Website Visitor',
+    phone: 'N/A',
+    course: 'FREE Shopify & E-Commerce Workshop',
+    message: 'Clicked Register Free button for workshop',
+    type: 'workshop_register'
+  });
+  const msg = encodeURIComponent(
+    `السلام علیکم! I want to register for the:\n\n*FREE Shopify & E-Commerce Workshop*\n📅 21 April 2026\n\nPlease confirm my seat. Thank you!`
+  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+}
+
+// ═══════════════════════════════════════════════
+// KOREA BUTTON — saves to DB + opens WhatsApp
+// ═══════════════════════════════════════════════
+async function koreaEnquiry() {
+  await saveToSupabase({
+    name: 'Website Visitor',
+    phone: 'N/A',
+    course: 'EPS-TOPIK Korean Language Course',
+    message: 'Clicked Korea enquiry button',
+    type: 'korea_enquiry'
+  });
+  const msg = encodeURIComponent(
+    `السلام علیکم! I am interested in:\n\n*EPS-TOPIK Korean Language Course*\n\nI want to know about the schedule, fees, and admission process.\n\nThank you!`
+  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+}
+
+// ═══════════════════════════════════════════════
+// FLOATING WHATSAPP BUTTON
+// ═══════════════════════════════════════════════
+async function openWhatsApp() {
+  await saveToSupabase({
+    name: 'Website Visitor',
+    phone: 'N/A',
+    course: 'General Inquiry',
+    message: 'Clicked floating WhatsApp button',
+    type: 'whatsapp_float'
+  });
+  const msg = encodeURIComponent(
+    `السلام علیکم! I visited *asianacademy.online* and would like to get more information about your courses. Please guide me.`
+  );
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${msg}`, '_blank');
+}
+
+// ═══════════════════════════════════════════════
+// TOAST NOTIFICATION
+// ═══════════════════════════════════════════════
+function showToast(msg) {
+  let t = document.getElementById('toast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = 'toast';
+    t.style.cssText = `
+      position:fixed;bottom:90px;left:50%;transform:translateX(-50%) translateY(20px);
+      background:#1a1a6e;color:#fff;padding:12px 24px;border-radius:30px;
+      font-size:14px;font-weight:600;z-index:9999;opacity:0;
+      transition:all .3s ease;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.3);
+    `;
+    document.body.appendChild(t);
+  }
+  t.textContent = msg;
+  t.style.opacity = '1';
+  t.style.transform = 'translateX(-50%) translateY(0)';
+  setTimeout(() => {
+    t.style.opacity = '0';
+    t.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 3500);
+}
+
+// ═══════════════════════════════════════════════
+// MOBILE MENU
+// ═══════════════════════════════════════════════
+function toggleMenu(){
+  const links = document.querySelector('.nav-links');
+  if (!links) return;
+  if (links.style.display === 'flex') {
+    links.style.display = 'none';
+  } else {
+    links.style.cssText = 'display:flex;flex-direction:column;position:fixed;top:70px;left:0;width:100%;background:var(--navy);padding:20px 5%;gap:16px;z-index:999;';
+  }
+}
+</script>
+<!-- ═══════════ FLOATING WHATSAPP BUTTON ═══════════ -->
+<button onclick="openWhatsApp()" style="
+  position:fixed;bottom:28px;right:80px;
+  width:56px;height:56px;border-radius:50%;
+  background:#25d366;color:#fff;border:none;
+  font-size:26px;cursor:pointer;z-index:999;
+  box-shadow:0 4px 20px rgba(37,211,102,.5);
+  display:flex;align-items:center;justify-content:center;
+  transition:.3s;
+" title="Chat on WhatsApp" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+  💬
+</button>
+
+<!-- Spinner CSS -->
+<style>
+.btn-spinner{
+  display:inline-block;width:14px;height:14px;
+  border:2px solid rgba(255,255,255,.4);
+  border-top-color:#fff;border-radius:50%;
+  animation:spin .7s linear infinite;
+  vertical-align:middle;margin-right:6px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+
+</body>
+</html>
